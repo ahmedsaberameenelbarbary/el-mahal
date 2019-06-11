@@ -1,0 +1,55 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>CUSTOMER UPDATE </title>
+    </h:head>
+    <h:body>
+        <h:form dir="RTL" >
+            <h:commandButton value="GO!" action="thereports"  style="color:red; border-bottom-color:red;background-color: blue;text-align: center;font-size: large;font-style: italic"/> 
+
+            <HR align="center" size="15"  color="blue" />
+            <center> <h1><h:outputLabel value="الموردين" style="background: white;color:blue ; font-size: xx-large "/></h1></center>
+
+            <HR align="center" size="8"  color="blue" />
+
+            <h:panelGroup >
+                <h:panelGrid columns="10">
+                    <h:outputLabel value="DATE:" style="color:blue ; font-size: large "/> 
+                    <h:inputText value="#{cus.date}" id="date" style=" border-color: blue;background: white;color:red ; font-size: larger;border-radius:5">
+                        <f:converter converterId="dateco"/>
+                    </h:inputText>
+                    <h:outputLabel value="TIME:" style="color:blue ; font-size: large "/> 
+                    <h:inputText value="#{cus.time}" id="time" style="border-color: blue;background:white;color:red ; font-size: larger;border-radius:5">
+
+                        <f:convertDateTime pattern="h:m:s"/>
+
+                    </h:inputText>
+
+                </h:panelGrid></h:panelGroup> 
+            <HR align="center" size="1"  color="blue" />
+            <h:dataTable value="#{i.table}" id="all" var="a" border="1" width="100%" style="border-color: red;background: blue;color:white ; font-size:xx-large "  >
+
+                <h:column >
+                    <f:facet name="header">اسم المورد</f:facet>
+                    <h:outputText value="#{a.impi_name}" id="aNO"/>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">رقم الهاتف</f:facet>
+                        #{a.impo_phone}
+                </h:column>
+
+                <h:column>
+                    <f:facet name="header">العنوان</f:facet>
+                    <h:outputText value="#{a.impo_add}" id="aD"/>
+                </h:column>
+
+            </h:dataTable>
+
+        </h:form>
+
+    </h:body>
+</html>
+

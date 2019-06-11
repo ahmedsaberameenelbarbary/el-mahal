@@ -1,0 +1,66 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>CUSTOMER UPDATE </title>
+    </h:head>
+    <h:body>
+        <h:form dir="RTL" >
+            <h:commandButton value="GO!" action="thereports"  style="color:red; border-bottom-color:red;background-color: blue;text-align: center;font-size: large;font-style: italic"/> 
+
+            <HR align="center" size="15"  color="blue" />
+            <center> <h1><h:outputLabel value="المستخدمين" style="background: white;color:blue ; font-size: xx-large "/></h1></center>
+
+            <HR align="center" size="8"  color="blue" />
+
+            <h:panelGroup >
+                <h:panelGrid columns="10">
+                    <h:outputLabel value="DATE:" style="color:blue ; font-size: large "/> 
+                    <h:inputText value="#{cus.date}" id="date" style=" border-color: blue;background: white;color:red ; font-size: larger;border-radius:5">
+                        <f:converter converterId="dateco"/>
+                    </h:inputText>
+                    <h:outputLabel value="TIME:" style="color:blue ; font-size: large "/> 
+                    <h:inputText value="#{cus.time}" id="time" style="border-color: blue;background:white;color:red ; font-size: larger;border-radius:5">
+
+                        <f:convertDateTime pattern="h:m:s"/>
+
+                    </h:inputText>
+
+                </h:panelGrid></h:panelGroup> 
+            <center> <h:outputLabel value="مستخدمين البرنامج" style="color:blue ; font-size:xx-large "/> </center>
+            <HR align="center" size="5"  color="blue" />
+            <HR align="center" size="1"  color="blue" />
+            <h:dataTable value="#{f.table}" id="all" var="a" border="1" width="100%" style="border-color: red;background: blue;color:white ; font-size:large "  >
+
+                <h:column >
+                    <f:facet name="header">اسم االمستخدم</f:facet>
+                    <h:outputText value="#{a.name}" id="aNO"/>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">كلمة السر</f:facet>
+                        #{a.pass}
+                </h:column>               
+            </h:dataTable>
+            <HR align="center" size="1"  color="blue" />
+            <HR align="center" size="5"  color="blue" />
+            <HR align="center" size="1"  color="blue" />
+            <center> <h:outputLabel value="مستخدمين التقارير" style="color:blue ; font-size: xx-large "/> </center>
+            <HR align="center" size="1"  color="blue" />
+            <h:dataTable value="#{g.table}" id="al" var="a" border="1" width="100%" style="border-color: red;background: blue;color:white ; font-size:large "  >
+
+                <h:column >
+                    <f:facet name="header">اسم االمستخدم</f:facet>
+                    <h:outputText value="#{a.name}" id="a"/>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">كلمة السر</f:facet>
+                        #{a.pass}
+                </h:column>               
+            </h:dataTable>
+        </h:form>
+
+    </h:body>
+</html>
+

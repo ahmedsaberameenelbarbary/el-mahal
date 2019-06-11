@@ -1,0 +1,103 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>CUSTOMER </title>
+    </h:head>
+    <h:body>
+        <h:form dir="RTL">
+            <h:commandButton value="GO!" action="interface"  style="color:red; border-bottom-color:red;background-color: blue;text-align: center;font-size: large;font-style: italic"/> 
+            <HR align="center" size="15"  color="blue" />
+            <center> <h1><h:outputLabel value="الاصناف" style="background: white;color:blue ; font-size: xx-large "/></h1></center>
+
+            <HR align="center" size="15"  color="blue" />
+
+
+            <h:panelGrid columns="2">
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="التاريخ:" style="color:blue ; font-size: large "/> 
+                    <h:inputText value="#{c.date}" id="date" style=" border-color: blue;background: white;color:red ; font-size: larger;border-radius:5">
+                        <f:converter converterId="dateco"/>
+                    </h:inputText>
+                    <h:outputLabel value="الوقت:" style="color:blue ; font-size: large "/> 
+                    <h:inputText value="#{c.time}" id="time" style="border-color: blue;background: white;color:red ; font-size: larger;border-radius:5">
+
+                        <f:convertDateTime pattern="h:m:s"/>
+                    </h:inputText>
+                </h:panelGrid>
+            </h:panelGrid>
+
+            <HR align="center" size="1"  color="blue" />
+
+
+            <center>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="رقم الإضافة" style="color:blue ; font-size: xx-large "/> 
+                    <h:outputLabel value="#{c.autonum}" style="color:red ; font-size: xx-large "/> 
+                </h:panelGrid>
+                <h:panelGrid columns="2" style=" background-color: red" >
+                    <h:outputLabel value="كود الصنف:" style="color:white ; font-size: large ;font-style: italic "/> 
+                    <h:inputText value="#{c.categ_code}" id="cod" style="border-color: blue;background: white;color:red ; font-size: larger;border-radius:5">
+                        <f:ajax event="keyup" render="name fe2a buy sell" listener="#{c.getcateg()}"/>
+                    </h:inputText>
+                    <h:outputLabel value="اسم الصنف :" style="color:white ; font-size: large ;font-style: italic"/> 
+                    <h:inputText value="#{c.categ_name}" id="name" style="border-color: blue;background: white;color:red ; font-size: larger;border-radius:5"/>
+                    <h:outputLabel value="مكان الصنف:" style="color:white ; font-size: large ;font-style: italic"/> 
+                    <h:inputText value="#{c.categplace}" id="buy" style="border-color: blue;background: white;color:red ; font-size: larger;border-radius:5"/>
+                    <h:outputLabel value= "الكمية بالوحدة الصغري:" style="color:white ; font-size: large ;font-style: italic"/> 
+                    <h:inputText value="#{c.the_amount}" id="amount" style="border-color: blue;background: white;color:red ; font-size: larger;border-radius:5"/>
+
+                    <h:outputLabel value="حدد :"  id="fe2a" style="color:white ; font-size: large ;font-style: italic"/> 
+                    <h:panelGrid columns="2">
+                        <h:selectOneMenu value="#{c.smallunite}"  style="border-color: blue;background:blue;color:red;font-size: x-large  ">
+                            <h1> <f:selectItem itemLabel="الوحدة" noSelectionOption="true" /></h1>
+                            <f:selectItems value="#{c.wehda}" />
+                            <f:ajax  render="bigunite"/>
+                        </h:selectOneMenu>
+                        <h:selectOneMenu value="#{c.categ_class}"  style="border-color: blue;background:blue;color:red;font-size: x-large  ">
+                            <h1> <f:selectItem itemLabel="الفئة" noSelectionOption="true" /></h1>
+                            <f:selectItems value="#{c.fe2a}" />
+                        </h:selectOneMenu>  </h:panelGrid> 
+
+                    <h:outputLabel value="الوحدة الكبري:" style="color:white ; font-size: large ;font-style: italic"/> 
+                    <h:inputText value="#{c.bigunite}" id="bigunite" style="border-color: blue;background: white;color:red ; font-size: larger;border-radius:5"/>
+
+                    <h:outputLabel value="سعر البيع للصغري:" style="color:white ; font-size: large ;font-style: italic"/> 
+                    <h:inputText value="#{c.categ_sell_price}" id="buysmall" style="border-color: blue;background: white;color:red ; font-size: larger;border-radius:5">
+                        <f:ajax event="keyup" render="buybig"/>
+                    </h:inputText>
+                    <h:outputLabel value="سعر البيع للكبري:" style="color:white ; font-size: large ;font-style: italic"/> 
+                    <h:inputText disabled="true" value="#{c.categ_sell_pricebig}" id="buybig" style="border-color: blue;background: white;color:red ; font-size: larger;border-radius:5"/>
+
+                    <h:outputLabel value="سعر الشراءللصغري :" style="color:white ; font-size: large ;font-style: italic"/> 
+                    <h:inputText value="#{c.categ_buy_price}" id="sellsmall" style="border-color: blue;background: white;color:blue ; font-size: larger;border-radius:5">
+                        <f:ajax event="keyup" render="sellbig"/>
+                    </h:inputText>
+                    <h:outputLabel value="سعر الشراء للكبري:" style="color:white ; font-size: large ;font-style: italic"/> 
+                    <h:inputText disabled="true" value="#{c.categ_buy_pricebig}" id="sellbig" style="border-color: blue;background: white;color:red ; font-size: larger;border-radius:5"/>
+
+                </h:panelGrid> </center> 
+
+            <HR align="center" size="1"  color="blue" />
+            <center>
+                <h:panelGrid columns="2">
+                    <h:panelGrid columns="4">
+                        <h:commandButton value="إضافة" action="#{c.save()}" style="color:white; border-bottom-color:red;background-color: blue;text-align: center;font-size: large;font-style: italic"/>            
+                        <h:commandButton value="إعادة تحميل" action="#{c.clearall()}" style="color:white; border-bottom-color:red;background-color: blue;text-align: center;font-size: large;font-style: italic"/>                
+                        <h:commandButton  value="حذف" action="#{c.delete()}" style="color:white; border-bottom-color:red;background-color: blue;text-align: center;font-size: large;font-style: italic"/>            
+                        <h:commandButton  value="حذف الكل" action="#{c.deleteall()}"  style="color:white; border-bottom-color:red;background-color: blue;text-align: center;font-size: large;font-style: italic"/>            
+
+                    </h:panelGrid>
+                    <h:panelGrid columns="1">                  
+                        <i>   <center> <h:outputText value="#{c.msg}" id="msg" style="border-color: blue;background: white;color:blue ; font-size: xx-large;border-radius:5"/></center></i> 
+                    </h:panelGrid>               
+                </h:panelGrid> </center>
+            <HR align="center" size="15"  color="blue" />
+
+        </h:form>
+
+    </h:body>
+</html>
+

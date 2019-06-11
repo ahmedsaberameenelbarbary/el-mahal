@@ -1,0 +1,55 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>CUSTOMER UPDATE </title>
+    </h:head>
+    <h:body>
+        <h:form dir="RTL" >
+            <h:commandButton value="GO!" action="thereports"  style="color:red; border-bottom-color:red;background-color: blue;text-align: center;font-size: large;font-style: italic"/> 
+
+            <HR align="center" size="15"  color="blue" />
+            <center> <h1><h:outputLabel value="الموظفين" style="background: white;color:blue ; font-size: xx-large "/></h1></center>
+
+            <HR align="center" size="8"  color="blue" />
+
+
+            <HR align="center" size="1"  color="blue" />
+            <h:dataTable value="#{cus.c}" id="all" var="a" border="1" width="100%" style="border-color: red;background: blue;color:white ; font-size:xx-large "  >
+
+                <h:column>
+                    <f:facet name="header">اسم الموظف</f:facet>
+                        #{a.cus_name}
+                </h:column>
+                <h:column >
+                    <f:facet name="header">الراتب</f:facet>
+                    <h:outputText value="#{a.cus_balance}" id="B"/>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">رقم الهاتف</f:facet>
+                        #{a.cus_phone}
+                </h:column>
+                <h:column >
+                    <f:facet name="header">الوظيفة</f:facet>
+                    <h:outputText value="#{a.cus_occupation}" id="O"/>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">العنوان</f:facet>
+                    <h:outputText value="#{a.cus_address}" id="aD"/>
+                </h:column>
+                <h:column>
+                    <f:facet name="header"> تاريخ التعين</f:facet>
+                    <h:outputText value="#{a.date}"  style="background: blue;color:white ; font-size: small ; width: 80%">
+                        <f:convertDateTime pattern="dd-mm-yyyy"/>
+                    </h:outputText>
+                </h:column>
+
+            </h:dataTable>
+
+        </h:form>
+
+    </h:body>
+</html>
+

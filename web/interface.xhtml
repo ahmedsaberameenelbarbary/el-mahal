@@ -1,0 +1,75 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Facelet Title</title>
+
+        <h:outputStylesheet library="css" name="csd.css"/>
+    </h:head>
+    <h:body>
+        <h:form  dir="RTL">
+           <center>  <h:panelGrid columns="2">
+                   <h:outputLabel value="   مرحبا بك في سوبر ماركت " style="color:yellow ; font-size: large "/> 
+                    <h:outputLabel value="#{f.bankp} " style="color:blue ; font-size: xx-large "/> 
+                    </h:panelGrid></center>
+            <center> <h:panelGrid columns="7">
+                    <h:panelGrid columns="1">
+                        <h:selectOneMenu  value="#{f.opentran}" onchange="submit()" style="border-color: blue;background:blue;color:white ; font-size: xx-large;border-radius:5">
+                            <f:selectItem itemLabel="بيع" noSelectionOption="true"/>
+                            <f:selectItem itemLabel="قطاعي" itemValue="sellcata3y"/>
+                            <f:selectItem itemLabel="جملة" itemValue="sellgomla" /> 
+                             </h:selectOneMenu>
+                        <h:commandButton value="GO!" action="#{f.opentran()}"  style="color:red; border-bottom-color:red;background-color: blue;text-align: center;font-size: large;font-style: italic"/>                
+                    </h:panelGrid>
+
+                    <h:panelGrid columns="1">
+                        <h:selectOneMenu value="#{f.opencus}" onchange="submit()" style="border-color: blue;background:blue;color:white ; font-size:xx-large;border-radius:5">
+                            <f:selectItem itemLabel="شراء" noSelectionOption="true"/>
+                            <f:selectItem itemLabel="قطاعي" itemValue="buycata3y"/>
+                            <f:selectItem itemLabel="جملة" itemValue="buygomla"/>                                        
+                        </h:selectOneMenu>
+                        <h:commandButton value="GO!" action="#{f.opencus()}"  style="color:red; border-bottom-color:red;background-color: blue;text-align: center;font-size: large;font-style: italic"/>                
+                    </h:panelGrid>
+
+                     <h:panelGrid columns="1">
+                         <h:selectOneMenu value="#{f.openearn}" onchange="submit()" style="border-color: blue;background:blue;color:white ; font-size:xx-large;border-radius:5">
+                            <f:selectItem itemLabel="الربح" noSelectionOption="true"/>
+                            <f:selectItem itemLabel="ربح يومي" itemValue="earntoday"/>
+                            <f:selectItem itemLabel="ربح معين" itemValue="earntoall"/>               
+                        </h:selectOneMenu>
+                        <h:commandButton value="GO!" action="#{f.openearn()}"  style="color:red; border-bottom-color:red;background-color: blue;text-align: center;font-size: large;font-style: italic"/>                
+                    </h:panelGrid>
+                    
+                     <h:panelGrid columns="1">
+                         <h:selectOneMenu value="#{f.openadd}" onchange="submit()" style="border-color: blue;background:blue;color:white; font-size:xx-large;border-radius:5">
+                            <f:selectItem itemLabel="اضافة" noSelectionOption="true"/>
+                            <f:selectItem itemLabel="فئة" itemValue="categ_class"/>
+                            <f:selectItem itemLabel="وحدة" itemValue="categ_unite"/>               
+                            <f:selectItem itemLabel="صنف" itemValue="categ"/> 
+                            <f:selectItem itemLabel="مورد" itemValue="importers"/> 
+                        </h:selectOneMenu>
+                        <h:commandButton value="GO!" action="#{f.openadd()}"  style="color:red; border-bottom-color:red;background-color: blue;text-align: center;font-size: large;font-style: italic"/>                
+                    </h:panelGrid>
+                    <h:panelGrid columns="1">
+                        <h:selectOneMenu value="#{f.openuser}" onchange="submit()" style="border-color: blue;background:blue;color:white ; font-size:xx-large;border-radius:5">
+                            <f:selectItem itemLabel="تقارير" noSelectionOption="true"/>
+                            <f:selectItem itemLabel="تقارير" itemValue="index_1"/>                                          
+                        </h:selectOneMenu>
+                        <h:commandButton value="GO!" action="#{f.openuser()}"  style=" color:red; border-bottom-color:red;background-color: blue;text-align: center;font-size: large;font-style: italic"/>                
+                    </h:panelGrid>
+                   
+                        <h:commandButton value="اغلاق" action="index"  style="color: white; border-bottom-color:red;background-color: blue;text-align: center;font-size: xx-large;font-style: italic"/>                
+
+                </h:panelGrid></center>
+                <h:panelGrid columns="2">
+                <h:graphicImage url="img/6.jpg" width="700" height="640" />
+                <h:graphicImage url="img/6.jpg" width="700" height="640" />
+                </h:panelGrid>
+          
+        </h:form>
+
+    </h:body>
+</html>
+

@@ -1,0 +1,185 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>CUSTOMER </title>
+    </h:head>
+    <h:body dir="RTL">
+        <h:panelGrid columns="2">
+            <p:commandButton value="GO!" action="interface"  style="color:red; font-style: italic">
+                <f:ajax  listener="#{mv.emptytable()}"/>
+            </p:commandButton>
+            <p:commandButton value="Print" type="button" icon="pi pi-print" style="display:block">
+                <p:printer target="aa" />
+            </p:commandButton></h:panelGrid>
+        <h:form dir="RTL" id="aa">
+
+            <center><h:panelGrid columns="3"  style=" align-content: flex-end">
+                    <h:outputLabel value="عملية رقم " style="color:blue ; font-size: xx-large "/> 
+                    <h:outputLabel value="#{mv.autonum}" style="color:red ; font-size: xx-large "/> 
+
+                    <h:outputLabel  value="شراء جملة" style="background: white;color:gold ; font-size: xx-large "/> </h:panelGrid></center>                                   
+
+            <HR align="center" size="15"  color="blue" />
+            <h:panelGrid columns="5" style=" background-color: red" >
+                <h:panelGrid columns="2" >
+                    <h:outputLabel value="التاريخ:" style="color:blue ; font-size: large "/> 
+                    <h:inputText value="#{mv.date}" id="date" style=" border-color: blue;background: white;color:red ; font-size: larger;border-radius:5">
+                        <f:converter converterId="dateco"/>
+                    </h:inputText>
+                    <h:outputLabel value="الوقت:" style="color:blue ; font-size: large "/> 
+                    <h:inputText value="#{mv.time}" id="time" style="border-color: blue;background: white;color:red ; font-size: larger;border-radius:5">
+
+                        <f:convertDateTime pattern="h:m:s"/>
+                    </h:inputText>
+                </h:panelGrid >
+                <h:panelGrid columns="2" style=" background-color: red" >
+                    <h:outputLabel value="الكمية في المخزن :" style="color:white ; font-size: large ;font-style: italic"/> 
+                    <h:inputText disabled="true" value="#{mv.the_amount}" id="a" style="border-color: blue;background: white;color:red ; font-size: larger;border-radius:5">
+                    </h:inputText> </h:panelGrid>
+                <h:panelGrid columns="2" style=" background-color: red" >
+                    <h:outputLabel value="الثمن:" style="color:white ; font-size: large ;font-style: italic"/> 
+                    <h:inputText disabled="true" value="#{mv.price}" id="price" style="border-color: blue;background: white;color:red ; font-size: larger;border-radius:5"/>
+                </h:panelGrid>
+                <h:panelGrid columns="2" style=" background-color: red" >
+                    <h:outputLabel value="الاجمالي:" style="color:white ; font-size: large ;font-style: italic"/> 
+                    <h:inputText disabled="true" value="#{mv.thesum}" id="sum" style="border-color: blue;background: white;color:red ; font-size: larger;border-radius:5"/>
+                </h:panelGrid>
+
+                <h:commandButton value="مسح الاجمالي" action="#{mv.clear()}" style="color:white; border-bottom-color:red;background-color: blue;text-align: center;font-size: large;font-style: italic"/>                
+            </h:panelGrid>
+            <HR align="center" size="15"  color="blue" />
+            <HR align="center" size="1"  color="blue" />
+            <center>
+
+                <h:panelGrid columns="5" style=" background-color: red" >
+                    <h:panelGrid columns="2" style=" background-color: red" >
+                        <h:outputLabel value="كود الصنف:" style="color:white ; font-size: large ;font-style: italic "/> 
+                        <h:inputText value="#{mv.categ_code}" id="cod" style="border-color: blue;background: white;color:red ; font-size: larger;border-radius:5">
+                            <f:ajax event="keyup" render="smallunite name buysmall a" listener="#{mv.getcateg(4)}"/>
+                        </h:inputText>
+                    </h:panelGrid>
+                    <h:panelGrid columns="2" style=" background-color: red" >
+                        <h:outputLabel value="اسم الصنف :" style="color:white ; font-size: large ;font-style: italic"/> 
+                        <h:inputText disabled="true" value="#{mv.categ_name}" id="name" style="border-color: blue;background: white;color:red ; font-size: larger;border-radius:5"/>
+                    </h:panelGrid>  
+                  
+                    <h:panelGrid columns="2" style=" background-color: red" >
+                        <h:outputLabel value="الكمية:" style="color:white ; font-size: large ;font-style: italic"/> 
+                        <h:inputText value="#{mv.the_amount}" id="amount" style="border-color: blue;background: white;color:red ; font-size: larger;border-radius:5">
+                            <f:ajax event="keyup" render="price "  />
+                        </h:inputText>
+                    </h:panelGrid>
+                    <h:panelGrid columns="2" style=" background-color: red" >
+                        <h:outputLabel value="الوحدة :"  id="fe2a" style="color:white ; font-size: large ;font-style: italic"/>               
+                        <h:inputText disabled="true" value="#{mv.bigunite}" id="smallunite" style="border-color: blue;background: white;color:red ; font-size: larger;border-radius:5"/>
+                    </h:panelGrid>        
+                    <h:panelGrid columns="2" style=" background-color: red" >
+                        <h:outputLabel value="سعر الشراء :" style="color:white ; font-size: large ;font-style: italic"/> 
+                        <h:inputText disabled="true" value="#{mv.categ_buy_pricebig}" id="buysmall" style="border-color: blue;background: white;color:red ; font-size: larger;border-radius:5">
+                            <f:ajax event="keyup" render="buybig"/>
+                        </h:inputText> </h:panelGrid> 
+                </h:panelGrid></center> 
+            <HR align="center" size="1"  color="blue" />          
+            <center>
+                <h:panelGrid columns="2">
+                    <h:panelGrid columns="5">
+                        <h:commandButton value="شراء" action="#{mv.save(4)}" style="color:white; border-bottom-color:red;background-color: blue;text-align: center;font-size: large;font-style: italic"> 
+                            <f:ajax  render="one buysmall name amount smallunite cod price sum r a" listener="#{mv.settable()}"/>
+                        </h:commandButton>           
+                        <h:commandButton value="إعادة تحميل" action="#{mv.clearall()}" style="color:white; border-bottom-color:red;background-color: blue;text-align: center;font-size: large;font-style: italic"/>                
+                        <h:commandButton  value="حذف" action="#{mv.delete()}" style="color:white; border-bottom-color:red;background-color: blue;text-align: center;font-size: large;font-style: italic"/>            
+                        <h:commandButton  value="حذف الكل" action="#{mv.deleteall()}"  style="color:white; border-bottom-color:red;background-color: blue;text-align: center;font-size: large;font-style: italic"/>            
+
+                    </h:panelGrid>
+                    <h:panelGrid columns="1">                  
+                        <i>   <center> <h:outputText value="#{mv.msg}" id="msg" style="border-color: blue;background: white;color:blue ; font-size: xx-large;border-radius:5"/></center></i> 
+                    </h:panelGrid>               
+                </h:panelGrid> </center>
+            <HR align="center" size="15"  color="blue" />
+             <center> <h:panelGrid columns="2" style=" background-color: red" >
+            <h:outputLabel value="عدد مشتريات الفاتورة :" style="color:white ; font-size: large ;font-style: italic"/> 
+            <h:inputText disabled="true" value="#{mv.rowcount}" id="r" style=" border-color: blue;background: white;color:red ; font-size: larger;border-radius:5"/>
+                 </h:panelGrid>  </center>  
+            <HR align="center" size="1"  color="blue" />          
+            <h:dataTable value="#{mv.alm}" id="one" var="a" border="1" width="100%" style="border-color: red;background: red;color:white ; font-size: large "  >
+                <h:column >
+                    <f:facet name="header">كود الصنف </f:facet>
+                    <h:outputText value="#{a.categ_code}" id="ac"  style="border-color: blue;color:white ; font-size: larger"/>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">اسم  الصنف </f:facet>
+                    <h:outputText value="#{a.categ_name}" style="border-color: blue;color:white ; font-size: xx-largelarger" />
+                </h:column>
+                <h:column >
+                    <f:facet name="header">الكمية</f:facet>
+                    <h:outputText value="#{a.the_amount}" style="border-color: blue;color:white ; font-size: xx-largelarger" />
+                </h:column>
+                <h:column >
+                    <f:facet name="header">الوحدة </f:facet>
+                    <h:outputText value="#{a.smallunite}" />
+                </h:column>            
+                <h:column>             
+                    <f:facet name="header">سعر الشراء</f:facet>
+                        #{a.categ_buy_pricebig}
+                </h:column>
+
+            </h:dataTable>
+            <center> <h:panelGrid columns="1">
+
+                    <h:selectOneMenu value="#{user.vis}" onchange="submit()" style=" color: blue;border-color:blue;background-color: white;text-align: center;font-size:large;">
+                        <f:selectItem itemLabel="الة حاسبة" itemValue="visible"/> 
+                        <f:selectItem itemLabel="اخفاء" itemValue="hidden"/>
+
+                    </h:selectOneMenu>
+
+                    <h:panelGrid columns="1" border="2" style=" visibility:#{user.vis};color: blue;border-color:blue;background-color: white;text-align: center;font-size:large">
+                        <h:inputText disabled="true" value="#{user.name}" id="n" style=" color: blue;border-color:blue;background-color: white;text-align: center;font-size:large"/>
+                        <h:panelGrid columns="3">
+                            <h:commandButton  value="off" action="#{user.setoff()}" style=" color: red;border-color:blue;background-color: white;text-align: center;font-size:large; width: 50px"/>
+                            <h:commandButton value="+/-" action="#{user.setsign()}" style=" color: blue;border-color:blue;background-color: white;text-align: center;font-size:large; width: 50px"/>
+                            <h:commandButton  value="clear" action="#{user.clear()}" style=" color: blue;border-color:blue;background-color: white;text-align: center;font-size:large; width: 105px"/>
+
+                        </h:panelGrid>
+                        <h:panelGrid columns="4">
+                            <h:commandButton id="a7" value="7" action="#{user.add(7)}" style=" color: blue;border-color:blue;background-color: white;text-align: center;font-size:large; width: 50px"/>
+                            <h:commandButton id="a8" value="8" action="#{user.add(8)}" style=" color: blue;border-color:blue;background-color: white;text-align: center;font-size:large; width: 50px"/>
+                            <h:commandButton id="a9" value="9" action="#{user.add(9)}" style=" color: blue;border-color:blue;background-color: white;text-align: center;font-size:large; width: 50px"/>
+                            <h:commandButton id="add" value="+" action="#{user.setop('+')}" style=" color: blue;border-color:blue;background-color: white;text-align: center;font-size:large; width: 50px"/>
+
+                        </h:panelGrid>
+
+                        <h:panelGrid columns="4">
+                            <h:commandButton id="a4" value="4" action="#{user.add(4)}" style=" color: blue;border-color:blue;background-color: white;text-align: center;font-size:large; width: 50px" />
+                            <h:commandButton id="a5" value="5" action="#{user.add(5)}" style=" color: blue;border-color:blue;background-color: white;text-align: center;font-size:large; width: 50px"/>
+                            <h:commandButton id="a6" value="6" action="#{user.add(6)}" style=" color: blue;border-color:blue;background-color: white;text-align: center;font-size:large; width: 50px"/>
+
+                            <h:commandButton id="sub1" value="-" action="#{user.setop('-')}" style=" color: blue;border-color:blue;background-color: white;text-align: center;font-size:large; width: 50px"/>
+                        </h:panelGrid>
+                        <h:panelGrid columns="4">
+                            <h:commandButton id="a1" value="1" action="#{user.add(1)}" style=" color: blue;border-color:blue;background-color: white;text-align: center;font-size:large; width: 50px"/>
+                            <h:commandButton id="a2" value="2" action="#{user.add(2)}" style=" color: blue;border-color:blue;background-color: white;text-align: center;font-size:large; width: 50px"/>
+                            <h:commandButton id="a3" value="3" action="#{user.add(3)}" style=" color: blue;border-color:blue;background-color: white;text-align: center;font-size:large; width: 50px"/>
+
+                            <h:commandButton id="multi" value="X" action="#{user.setop('*')}" style=" color: blue;border-color:blue;background-color: white;text-align: center;font-size:large; width: 50px"/>
+                        </h:panelGrid>
+                        <h:panelGrid columns="4">
+                            <h:commandButton id="aequl" value="=" action="#{user.setequal()}" style=" color: blue;border-color:blue;background-color: white;text-align: center;font-size:large; width: 50px" />
+                            <h:commandButton id="a0"  value="0" action="#{user.add(0)}" style=" color: blue;border-color:blue;background-color: white;text-align: center;font-size:large; width: 50px"/>
+                            <h:commandButton id="sub" value="." action="#{user.adddot()}" style=" color: blue;border-color:blue;background-color: white;text-align: center;font-size:large; width: 50px"/>
+                            <h:commandButton  value="÷" action="#{user.setop('/')}" style=" color: blue;border-color:blue;background-color: white;text-align: center;font-size:large; width: 50px"/>
+                        </h:panelGrid>
+                    </h:panelGrid>                  
+
+
+                </h:panelGrid> </center>
+
+
+        </h:form>
+
+    </h:body>
+</html>
+

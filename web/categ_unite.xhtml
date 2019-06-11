@@ -1,0 +1,67 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>CUSTOMER </title>
+    </h:head>
+    <h:body>
+        <h:form dir="RTL" style=" background-color: white">
+            <h:commandButton value="GO!" action="interface"  style="color:red; border-bottom-color:red;background-color: blue;text-align: center;font-size: large;font-style: italic"/> 
+            <HR align="center" size="7"  color="blue" />
+            <center> <h1><h:outputLabel value="الوحدة" style="background: white;color:blue ; font-size: xx-large "/></h1></center>
+
+            <HR align="center" size="1"  color="blue" />
+
+            <center>
+               
+              
+                    <h:panelGrid columns="2" style=" background-color: red">
+                        <h:outputLabel value="الوحدة الكبري:" style="color:white ; font-size: large ;font-style: italic"/> 
+                        <h:inputText value="#{un.bigunite}" id="bi" style="border-color: blue;background: white;color:red ; font-size: larger;border-radius:5"/>
+                            
+                       <h:outputLabel value="الوحدة الصغري:" style="color:white ; font-size: large ;font-style: italic"/> 
+                       <h:inputText value="#{un.smallunite}" id="sm" style="border-color: blue;background: white;color:red ; font-size: larger;border-radius:5"/>
+                       <h:outputLabel value="نسبة الصغرى الي الكبري:" style="color:white ; font-size: large ;font-style: italic"/> 
+                       <h:inputText value="#{un.rate}" id="ra" style="border-color: blue;background: white;color:red ; font-size: larger;border-radius:5"/>
+                       
+                    </h:panelGrid> 
+              
+                <h:panelGrid columns="4">
+                    <h:commandButton  value="اضافة" action="#{un.save()}"  style="color:white; border-bottom-color:red;background-color: blue;text-align: center;font-size: large;font-style: italic"/>            
+                    <h:commandButton value="اعادة تحميل" action="#{un.clearall()}"  style="color:white; border-bottom-color:red;background-color: blue;text-align: center;font-size: large;font-style: italic"/>                
+                    <h:commandButton  value="حذف" action="#{un.delete()}"  style="color:white; border-bottom-color:red;background-color: blue;text-align: center;font-size: large;font-style: italic"/>            
+                    <h:commandButton  value="حذف الكل" action="#{un.deleteall()}"  style="color:white; border-bottom-color:red;background-color: blue;text-align: center;font-size: large;font-style: italic"/>            
+
+                </h:panelGrid>
+
+            </center>
+
+
+            <HR align="center" size="8"  color="blue" />
+
+
+
+            <!--///////////////////////////**************/////////////////888888888888888//////////////////////////-->
+
+            <h:dataTable value="#{un.c}" id="one" var="a" border="1" width="100%" style="border-color: red;background: green;color:white ; font-size: small "  >
+                <h:column >
+                    <f:facet name="header">الوحدة الكبري</f:facet>
+                    <h:outputText value="#{a.bigunite}" id="b"/>
+                </h:column>
+                 <h:column >
+                    <f:facet name="header">الوحدة الصغري</f:facet>
+                    <h:outputText value="#{a.smallunite}" id="s"/>
+                </h:column>
+                 <h:column >
+                    <f:facet name="header">نسبة الصغري الي الكبري</f:facet>
+                    <h:outputText value="#{a.rate}" id="r"/>
+                </h:column>
+
+            </h:dataTable>
+        </h:form>
+
+    </h:body>
+</html>
+

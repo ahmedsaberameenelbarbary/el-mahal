@@ -1,0 +1,75 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>CUSTOMER </title>
+    </h:head>
+    <h:body>
+        <h:form dir="RTL" >
+            <h:commandButton value="GO!" action="addspecial"  style="color:red; border-bottom-color:red;background-color: blue;text-align: center;font-size: large;font-style: italic"/> 
+            <HR align="center" size="15"  color="blue" />
+            <center> <h1><h:outputLabel value="الموطفين" style="background: white;color:blue ; font-size: xx-large "/></h1></center>
+            <HR align="center" size="15"  color="blue" />
+            <h:panelGrid columns="2">
+                <h:outputLabel value="DATE:" style="color:blue ; font-size: large "/> 
+                <h:inputText value="#{cus.date}" id="date" style=" border-color: blue;background: white;color:red ; font-size: larger;border-radius:5">
+                    <f:convertDateTime pattern="dd-mm-yyyy"/>
+                </h:inputText>
+                <h:outputLabel value="TIME:" style="color:blue ; font-size: large "/> 
+                <h:inputText value="#{cus.time}" id="time" style="border-color: blue;background: white;color:red ; font-size: larger;border-radius:5">
+
+                    <f:convertDateTime pattern="h:m:s"/>
+                </h:inputText>
+            </h:panelGrid>
+
+            <HR align="center" size="1"  color="blue" />
+            <center><h:panelGrid columns="2">
+                <h:outputLabel value="رقم الاضافة:" style="color:blue ; font-size: xx-large "/> 
+                <h:outputLabel value="#{cus.autonum}" style="color:red ; font-size: xx-large "/> 
+            </h:panelGrid></center> 
+            <center>
+            <h:panelGrid columns="2">
+                <h:outputLabel value="اسم الموطف:" style="color:blue ; font-size: xx-large "/> 
+                <h:inputText value="#{cus.cus_name}" id="name" style="border-color: blue;background: white;color:red ; font-size: larger;border-radius:5"/>
+                <h:outputLabel value="رقم الهاتف:" style="color:blue ; font-size: xx-large "/> 
+                <h:inputText value="#{cus.cus_phone}" id="phone" style="border-color: blue;background: white;color:red ; font-size: larger;border-radius:5"/>
+                <h:outputLabel value="الوطيفة:" style="color:blue ; font-size: xx-large "/> 
+                <h:inputText value="#{cus.cus_occupation}" id="occup" style="border-color: blue;background: white;color:red ; font-size: larger;border-radius:5"/>
+                <h:outputLabel value="العنوان" style="color:blue ; font-size: xx-large "/> 
+                <h:inputText value="#{cus.cus_address}" id="ADD" style="border-color: blue;background: white;color:red ; font-size: larger;border-radius:5"/>
+
+                <h:outputLabel value="الراتب الشهري" style="color:mediumvioletred ; font-size: xx-large "/> 
+                <h:inputText value="#{cus.cus_balance}" id="BALANCE" style="border-color: blue;background: white;color:red ; font-size: larger;border-radius:5"/>  
+            </h:panelGrid></center>
+               <center> <h:panelGrid columns="1">
+                 <h:panelGrid columns="2">
+            <h:outputLabel value="النوع" style="background: white;color:blue ; font-size: large "/>
+            <h:selectOneRadio value="#{cus.cus_sex}">
+                <f:selectItem itemLabel="ذكر"  itemValue="MALE" />
+                <f:selectItem itemLabel="انثي"  itemValue="FEMALE"/>
+            </h:selectOneRadio></h:panelGrid>
+             <h:panelGrid columns="2">
+            <h:outputLabel value="الحالةالاجتماعية" style="background: white;color:blue ; font-size: large "/>
+            <h:selectOneRadio value="#{cus.cus_marital_state}">
+                <f:selectItem itemLabel="متزوج"  itemValue="MARRIED"/>
+                <f:selectItem itemLabel="غير متزوج"  itemValue="UN MARRIED"/>
+            </h:selectOneRadio>
+</h:panelGrid>
+            <h:panelGrid columns="1">
+                <h:panelGrid columns="2">
+                    <h:commandButton value="اضافة" action="#{cus.save()}" style="color:red; border-bottom-color:red;background-color: blue;text-align: center;font-size: xx-large;font-style: italic"/>            
+                    <h:commandButton value="اعادة تحميل" action="#{cus.clearall()}"  style="color:red; border-bottom-color:red;background-color: blue;text-align: center;font-size: xx-large;font-style: italic"/>                
+                </h:panelGrid>
+                <h:panelGrid columns="1">                  
+                    <i>   <center> <h:outputText value="#{cus.msg}" id="msg" style="border-color: blue;background: white;color:blue ; font-size: xx-large;border-radius:5"/></center></i> 
+                </h:panelGrid>               
+            </h:panelGrid> </h:panelGrid></center>
+            <HR align="center" size="15"  color="blue" />
+
+        </h:form>
+
+    </h:body>
+</html>
+

@@ -1,0 +1,82 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>CUSTOMER UPDATE </title>
+    </h:head>
+    <h:body>
+        <h:form dir="RTL">
+            <h:commandButton value="GO!" action="addspecial"  style="color:red; border-bottom-color:red;background-color: blue;text-align: center;font-size: large;font-style: italic"/> 
+            <HR align="center" size="15"  color="blue" />
+            <center> <h1><h:outputLabel value="تحديث بيانات الموظفين" style="background: white;color:blue ; font-size: xx-large "/></h1></center>
+
+            <HR align="center" size="15"  color="blue" />
+
+            <h:panelGroup >
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="التاريخ:" style="color:blue ; font-size: xx-large "/> 
+                    <h:inputText value="#{cus.date}" id="date" style=" border-color: blue;background: white;color:red ; font-size: larger;border-radius:5">
+                        <f:converter converterId="dateco"/>
+                    </h:inputText>
+                    <h:outputLabel value="الوقت:" style="color:blue ; font-size: xx-large "/> 
+                    <h:inputText value="#{cus.time}" id="time" style="border-color: blue;background: white;color:red ; font-size: larger;border-radius:5">
+
+                        <f:convertDateTime pattern="h:m:s"/>
+
+                    </h:inputText>
+
+                </h:panelGrid></h:panelGroup> 
+            <HR align="center" size="1"  color="blue" />
+            <i> <center><h:panelGrid columns="3">
+                        <h:outputLabel value="ادخل رقم الموظف:" style="color:blue ; font-size: large "/> 
+                        <h:inputText value="#{cus.cus_account_num}" id="i" style="border-color: blue;color:red ; font-size: larger;"> 
+                            <f:ajax event="keyup" render="a s d f g h j"  listener="#{c.getcus()}"/>
+                        </h:inputText>
+                        <h:commandButton value="تحميل البيانات" action="#{cus.getcus()}"  style=" color: red; border-bottom-color:red;background-color: blue;text-align: center;font-size: large;font-style: italic">
+                            <f:ajax  render="a s d f g h j" execute="@form"/>
+                        </h:commandButton>   
+                    </h:panelGrid></center></i>
+            <HR align="center" size="1"  color="blue" />
+            <center>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="اسم الموطف:" style="color:blue ; font-size: xx-large "/> 
+                    <h:inputText value="#{cus.cus_name}" id="a" style="border-color: blue;background: white;color:red ; font-size: larger;border-radius:5"/>
+                    <h:outputLabel value="رقم الهاتف:" style="color:blue ; font-size: xx-large "/> 
+                    <h:inputText value="#{cus.cus_phone}" id="s" style="border-color: blue;background: white;color:red ; font-size: larger;border-radius:5"/>
+                    <h:outputLabel value="الوطيفة:" style="color:blue ; font-size: xx-large "/> 
+                    <h:inputText value="#{cus.cus_occupation}" id="d" style="border-color: blue;background: white;color:red ; font-size: larger;border-radius:5"/>
+                    <h:outputLabel value="العنوان" style="color:blue ; font-size: xx-large "/> 
+                    <h:inputText value="#{cus.cus_address}" id="f" style="border-color: blue;background: white;color:red ; font-size: larger;border-radius:5"/>
+
+                    <h:outputLabel value="الراتب الشهري" style="color:mediumvioletred ; font-size: xx-large "/> 
+                    <h:inputText value="#{cus.cus_balance}" id="g" style="border-color: blue;background: white;color:red ; font-size: larger;border-radius:5"/>  
+                </h:panelGrid></center>
+            <center> <h:panelGrid columns="1">
+                    <h:panelGrid columns="2">
+                        <h:outputLabel value="النوع" style="background: white;color:blue ; font-size: large "/>
+                        <h:selectOneRadio value="#{cus.cus_sex}" id="h">
+                            <f:selectItem itemLabel="ذكر"  itemValue="MALE" />
+                            <f:selectItem itemLabel="انثي"  itemValue="FEMALE"/>
+                        </h:selectOneRadio></h:panelGrid>
+                    <h:panelGrid columns="2">
+                        <h:outputLabel value="الحالةالاجتماعية" style="background: white;color:blue ; font-size: large "/>
+                        <h:selectOneRadio value="#{cus.cus_marital_state}" id="j">
+                            <f:selectItem itemLabel="متزوج"  itemValue="MARRIED"/>
+                            <f:selectItem itemLabel="غير متزوج"  itemValue="UN MARRIED"/>
+                        </h:selectOneRadio>
+                    </h:panelGrid> </h:panelGrid></center>
+                    <i>   <center> <h:outputText value="#{cus.msg}" id="msg" style="border-color: blue;background: white;color:blue ; font-size: x-large;border-radius:5"/></center></i> 
+                    <HR align="center" size="3"  color="blue" />
+                    <i> <center><h:panelGrid columns="4" >                          
+                                <h:commandButton value="تحديث" action="#{cus.update()}"  style=" color: yellow; border-bottom-color:red;background-color: blue;text-align: center;font-size: xx-large;font-style: italic"/>
+                                <h:commandButton value="مسح موظف" action="#{cus.delete()}"  style=" color: yellow; border-bottom-color:red;background-color: blue;text-align: center;font-size: xx-large;font-style: italic"/>
+                                <h:commandButton value="refres" action="#{cus.clearall()}"  style=" color: yellow; border-bottom-color:red;background-color: blue;text-align: center;font-size: xx-large;font-style: italic"/>
+                                <h:commandButton value="مسح الكل" action="#{cus.deleteall()}"  style=" color: yellow; border-bottom-color:red;background-color: blue;text-align: center;font-size: xx-large;font-style: italic"/>
+                            </h:panelGrid></center></i>
+                    </h:form>
+
+                    </h:body>
+                    </html>
+

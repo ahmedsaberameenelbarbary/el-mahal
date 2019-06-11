@@ -1,0 +1,84 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>CUSTOMER UPDATE </title>
+    </h:head>
+    <h:body>
+       <h:form dir="RTL" >
+            <h:commandButton value="GO!" action="thereports"  style="color:red; border-bottom-color:red;background-color: blue;text-align: center;font-size: large;font-style: italic"/> 
+
+            <HR align="center" size="15"  color="blue" />
+            <center> <h1><h:outputLabel value="بيان بالأصناف" style="background: white;color:blue ; font-size: xx-large "/></h1></center>
+
+            <HR align="center" size="8"  color="blue" />
+
+            <h:panelGroup >
+                <h:panelGrid columns="10">
+
+                    <h:outputLabel value="the count of costomers IS:" style="color:blue ; font-size: large "/> 
+                    <h:outputLabel value="#{c.count}" style="color:red ; font-size: xx-large "/> 
+                </h:panelGrid></h:panelGroup> 
+            <HR align="center" size="1"  color="blue" />
+
+
+            <h:dataTable value="#{c.categvew}" id="one" var="a" border="1" width="100%" style="border-color: red;background: green;color:white ; font-size: small "  >
+                <h:column >
+                    <f:facet name="header">كود الصنف </f:facet>
+                    <h:outputText value="#{a.categ_code}" id="ac"/>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">اسم  الصنف </f:facet>
+                        #{a.categ_name}
+                </h:column>
+                <h:column >
+                    <f:facet name="header">الفئة</f:facet>
+                    <h:outputText value="#{a.categ_class}" />
+                </h:column>
+                <h:column >
+                    <f:facet name="header">الكمية بالقطاعي</f:facet>
+                    <h:outputText value="#{a.the_amount}" />
+                </h:column>
+                <h:column >
+                    <f:facet name="header">الوحدة الصغري</f:facet>
+                    <h:outputText value="#{a.smallunite}" />
+                </h:column>
+                <h:column >
+                    <f:facet name="header">الكمية بالجملة</f:facet>
+                    <h:outputText value="#{a.bigamount}" />
+                </h:column>
+                <h:column >
+                    <f:facet name="header">الوحدة الكبري</f:facet>
+                    <h:outputText value="#{a.bigunite}" />
+                </h:column>
+                <h:column >
+                    <f:facet name="header">المكان</f:facet>
+                    <h:outputText value="#{a.categplace}" />
+                </h:column>
+                <h:column>             
+                    <f:facet name="header">سعر البيع</f:facet>
+                        #{a.categ_sell_price}
+                </h:column>
+                <h:column>             
+                    <f:facet name="header">سعر البيع للكبري</f:facet>
+                        #{a.categ_sell_pricebig}
+                </h:column>
+                <h:column >
+                    <f:facet name="header">سعر الشراء</f:facet>
+                    <h:outputText value="#{a.categ_buy_price}" />
+                </h:column>
+                <h:column >
+                    <f:facet name="header">سعرالشراء للكبريء</f:facet>
+                    <h:outputText value="#{a.categ_buy_pricebig}" />
+                </h:column>
+
+
+
+            </h:dataTable>
+        </h:form>
+
+    </h:body>
+</html>
+
